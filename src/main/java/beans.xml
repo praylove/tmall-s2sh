@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <!-- 公共配置 -->
+    <!-- 配置DAO--> 
+    <bean id="dao" class="com.tmall.dao.DAOimpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    
+    <!-- 分页属性配置 -->
+    <bean id="page1" class="com.tmall.util.Page">
+        <property name="startPage" value="1"></property>
+        <property name="pageSize" value="5"></property>
+        <property name="currentPage" value="1"></property>
+    </bean>
+    
+    <bean id="product" class="com.tmall.beans.Product"></bean>
+    <!-- 分类配置 -->
+    <!--  配置 Struts2 的 action-->
+    <bean id="categoryAction" class="com.tmall.action.CategoryAction" scope="prototype">
+        <property name="categoryService" ref="categoryService"></property>
+        <property name="page" ref="page1"></property>
+    </bean>
+    
+    
+    <!-- 配置Service -->
+    <bean id="categoryService" class="com.tmall.service.CategoryService">
+        <property name="dao" ref="dao"></property>
+    </bean>
+    
+    <!-- 属性配置 -->
+    <!--  配置 Struts2 的 action-->
+    <bean id="propertyAction" class="com.tmall.action.PropertyAction" scope="prototype">
+        <property name="propertyService" ref="propertyService"></property>
+        <property name="categoryService" ref="categoryService"></property>
+    </bean>
+    
+    <!-- 配置Service -->
+    <bean id="propertyService" class="com.tmall.service.PropertyService">
+        <property name="dao" ref="dao"></property>
+        <property name="categoryService" ref="categoryService"></property>
+    </bean>
+    
+    <!-- 产品图片配置 -->
+    <!--  配置 Struts2 的 action-->
+    <bean id="productImageAction" class="com.tmall.action.ProductImageAction" scope="prototype">
+        <property name="imageService" ref="imageService"></property>
+        <property name="productService" ref="productService"></property>
+    </bean>
+    
+    <!-- 配置Service -->
+    <bean id="imageService" class="com.tmall.service.ProductImageService">
+        <property name="dao" ref="dao"></property>
+        <!-- <property name="product" ref="product"></property> -->
+        <property name="productService" ref="productService"></property>
+    </bean>
+    
+    <!-- 产品配置 -->
+    <!--  配置 Struts2 的 action-->
+    <bean id="productAction" class="com.tmall.action.ProductAction" scope="prototype">
+        <property name="productService" ref="productService"></property>
+        <property name="categoryService" ref="categoryService"></property>
+        <property name="page" ref="page1"></property>
+    </bean>
+    
+    <!-- 配置Service -->
+    <bean id="productService" class="com.tmall.service.ProductService">
+        <property name="dao" ref="dao"></property>
+        <property name="categoryService" ref="categoryService"></property>
+        <property name="imageService" ref="imageService"></property>
+    </bean>
+</beans>

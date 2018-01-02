@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017??12??27?? ????1:29:11 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.tmall.beans.Order" table="ORDER">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="orderCode" type="java.lang.String">
+            <column name="ORDERCODE" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+        <property name="post" type="java.lang.String">
+            <column name="POST" />
+        </property>
+        <property name="receiver" type="java.lang.String">
+            <column name="RECEIVER" />
+        </property>
+        <property name="mobile" type="java.lang.String">
+            <column name="MOBILE" />
+        </property>
+        <property name="userMessage" type="java.lang.String">
+            <column name="USERMESSAGE" />
+        </property>
+        <property name="createDate" type="java.util.Date">
+            <column name="CREATEDATE" />
+        </property>
+        <property name="payDate" type="java.util.Date">
+            <column name="PAYDATE" />
+        </property>
+        <property name="deliveryDate" type="java.util.Date">
+            <column name="DELIVERYDATE" />
+        </property>
+        <property name="confirmDate" type="java.util.Date">
+            <column name="CONFIRMDATE" />
+        </property>
+        <many-to-one name="user" class="com.tmall.beans.User" fetch="join">
+            <column name="UID" />
+        </many-to-one>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" />
+        </property>
+    </class>
+</hibernate-mapping>

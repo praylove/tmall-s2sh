@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017??12??27?? ????1:29:11 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.tmall.beans.PropertyValue" table="PROPERTYVALUE">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="product" class="com.tmall.beans.Product" fetch="join">
+            <column name="pid" />
+        </many-to-one>
+        <many-to-one name="property" class="com.tmall.beans.Property" fetch="join">
+            <column name="ptid" />
+        </many-to-one>
+        <property name="value" type="java.lang.String">
+            <column name="VALUE" />
+        </property>
+    </class>
+</hibernate-mapping>

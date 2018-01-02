@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017??12??27?? ????1:29:11 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.tmall.beans.Product" table="PRODUCT">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="subTitle" type="java.lang.String">
+            <column name="SUBTITLE" />
+        </property>
+        <property name="orignalPrice" type="float">
+            <column name="ORIGNALPRICE" />
+        </property>
+        <property name="promotePrice" type="float">
+            <column name="PROMOTEPRICE" />
+        </property>
+        <property name="stock" type="int">
+            <column name="STOCK" />
+        </property>
+        <property name="createDate" type="java.util.Date">
+            <column name="CREATEDATE" />
+        </property>
+        <many-to-one name="category" class="com.tmall.beans.Category" fetch="join">
+            <column name="cid" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

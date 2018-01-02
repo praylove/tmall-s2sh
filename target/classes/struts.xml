@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true"></constant>
+
+	<package name="admin" extends="struts-default" namespace="/admin">
+		<action name="*_list" class="{1}Action" method="list">
+			<result>list_{1}.jsp</result>
+		</action>
+		<action name="*_edit" class="{1}Action" method="edit">
+            <result>edit_{1}.jsp</result>
+        </action>
+        <action name="property_*" class="propertyAction" method="{1}">
+            <result type="redirectAction">property_list?cid=${cid}</result>
+            <allowed-methods>add, update, delete</allowed-methods>
+        </action>
+        <action name="product_*" class="productAction" method="{1}">
+            <result type="redirectAction">product_list?cid=${cid}</result>
+            <allowed-methods>add, update, delete</allowed-methods>
+        </action>
+        <action name="productImage_*" class="productImageAction" method="{1}">
+            <result type="redirectAction">productImage_list?pid=${pid}</result>
+            <allowed-methods>add, delete</allowed-methods>
+        </action>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<result type="redirectAction">{1}_list</result>
+			<allowed-methods>add, update, delete</allowed-methods>
+		</action>
+	</package>
+</struts>

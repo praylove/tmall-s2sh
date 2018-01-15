@@ -71,4 +71,42 @@
         <property name="categoryService" ref="categoryService"></property>
         <property name="imageService" ref="imageService"></property>
     </bean>
+    
+    <!-- 属性值配置 -->
+    <!--  配置 Struts2 的 action-->
+    <bean id="propertyValueAction" class="com.tmall.action.PropertyValueAction" scope="prototype">
+        <property name="productService" ref="productService"></property>
+        <property name="propertyValueService" ref="propertyValueService" ></property>
+    </bean>
+    
+    <!-- 配置Service -->
+    <bean id="propertyValueService" class="com.tmall.service.PropertyValueService">
+        <property name="dao" ref="dao"></property>
+        <property name="productService" ref="productService"></property>
+        <property name="propertyService" ref="propertyService"></property>
+    </bean>
+    
+    <!-- 用户配置 -->
+    <!--  配置 Struts2 的 action-->
+    <bean id="userAction" class="com.tmall.action.UserAction" scope="prototype">
+        <property name="userService" ref="userService" ></property>
+        <property name="page" ref="page1"></property>
+    </bean>
+    
+    <!-- 配置Service -->
+    <bean id="userService" class="com.tmall.service.UserService">
+        <property name="dao" ref="dao"></property>
+    </bean>
+    
+    <!-- 订单配置 -->
+    <!--  配置 Struts2 的 action-->
+    <bean id="orderAction" class="com.tmall.action.OrderAction" scope="prototype">
+        <property name="page" ref="page1"></property>
+        <property name="orderService" ref="orderService"></property>
+    </bean>
+    
+    <!-- 配置Service -->
+    <bean id="orderService" class="com.tmall.service.OrderService">
+        <property name="dao" ref="dao"></property>
+    </bean>
 </beans>

@@ -62,9 +62,6 @@ public class ProductService {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Product.class);
 		criteria.add(Restrictions.eq("category.id", cid));
 		List<Product> ps = (List<Product>) dao.listForPage(criteria, beg, page.getPageSize());
-		for (Product p : ps) {
-			imageService.fillImage(p);
-		}
 
 		page.setTotalCount(dao.getTotal(Product.class));
 		page.setParams(ps);

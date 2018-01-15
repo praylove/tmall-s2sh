@@ -29,5 +29,17 @@
         <many-to-one name="category" class="com.tmall.beans.Category" fetch="join">
             <column name="cid" />
         </many-to-one>
+        <set name="productImages">
+            <key column="pid"></key>
+            <one-to-many class="com.tmall.beans.ProductImage"/>
+        </set>
+        <set name="productSingleImages" where="type='single'" lazy="false">
+            <key column="pid"></key>
+            <one-to-many class="com.tmall.beans.ProductImage"/>
+        </set>
+        <set name="productDetailsImages" where="type='details'" lazy="false">
+            <key column="pid"></key>
+            <one-to-many class="com.tmall.beans.ProductImage"/>
+        </set>
     </class>
 </hibernate-mapping>

@@ -44,7 +44,7 @@
 				<td>${p.promotePrice}</td>
 				<td>${p.stock}</td>
 				<td><a href="productImage_list?pid=${p.id}"><span class="glyphicon glyphicon-picture"></span></a></td>
-				<td><a href="propertyValue_list?pid=${p.id}&cid=${param.cid}"><span class="glyphicon glyphicon-list"></span></a></td>
+				<td><a href="propertyValue_edit?pid=${p.id}&cid=${param.cid}"><span class="glyphicon glyphicon-list"></span></a></td>
 				<td><a href="product_edit?cid=${param.cid}&pid=${p.id}"><span class="glyphicon glyphicon-edit"></span></a></td>
 				<td><a class="delete" href="product_delete?cid=${param.cid}&product.id=${p.id}"><span class="glyphicon glyphicon-trash"></span></a></td>
 			</tr>

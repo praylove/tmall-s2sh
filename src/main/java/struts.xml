@@ -6,7 +6,14 @@
 <struts>
 	<constant name="struts.devMode" value="true"></constant>
 
+    <package name="fore" extends="struts-default" namespace="/">
+        <action name="admin" class="categoryAction" method="list">
+            <result>admin/list_category.jsp</result>
+        </action>
+    </package>
+
 	<package name="admin" extends="struts-default" namespace="/admin">
+	
 		<action name="*_list" class="{1}Action" method="list">
 			<result>list_{1}.jsp</result>
 		</action>
@@ -25,9 +32,12 @@
             <result type="redirectAction">productImage_list?pid=${pid}</result>
             <allowed-methods>add, delete</allowed-methods>
         </action>
-		<action name="*_*" class="{1}Action" method="{2}">
-			<result type="redirectAction">{1}_list</result>
-			<allowed-methods>add, update, delete</allowed-methods>
-		</action>
+		<action name="propertyValue_update" class="propertyValueAction" method="update">
+            <result type="redirectAction">propertyValue_edit?pid=${pid}</result>
+        </action>
+        <action name="*_*" class="{1}Action" method="{2}">
+            <result type="redirectAction">{1}_list</result>
+            <allowed-methods>add, update, delete</allowed-methods>
+        </action>
 	</package>
 </struts>

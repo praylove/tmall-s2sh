@@ -9,8 +9,8 @@
         <property name="hibernate.connection.url">jdbc:mysql:///test</property>
         <property name="hibernate.connection.username">root</property> -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">false</property>
         <property name="hibernate.hbm2ddl.auto">none</property>
         <mapping resource="com/tmall/beans/Category.hbm.xml"/>
         <mapping resource="com/tmall/beans/Order.hbm.xml"/>

@@ -13,7 +13,6 @@ import java.util.List;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tmall.beans.Product;
 import com.tmall.beans.ProductImage;
 import com.tmall.dao.DAOimpl;
 
@@ -122,21 +121,21 @@ public class ProductImageService {
 		return (List<ProductImage>) dao.list(ProductImage.class, condition);
 	}
 
-	/**
-	 * 填充产品内的产品图片
-	 * 
-	 * @param p
-	 */
-	public void fillImage(Product p) {
-		System.out.println(p == null);
-		p.setProductImages(list(p.getId()));
-		p.setProductDetailsImages(list(p.getId(), "'details'"));
-		List<ProductImage> singleImgs = list(p.getId(), "'single'");
-		p.setProductSingleImages(singleImgs);
-		if (!singleImgs.isEmpty()) {
-			p.setFirstProductImage(singleImgs.get(0));
-		}
-	}
+	// /**
+	// * 填充产品内的产品图片
+	// *
+	// * @param p
+	// */
+	// public void fillImage(Product p) {
+	// System.out.println(p == null);
+	// p.setProductImages(list(p.getId()));
+	// p.setProductDetailsImages(list(p.getId(), "'details'"));
+	// List<ProductImage> singleImgs = list(p.getId(), "'single'");
+	// p.setProductSingleImages(singleImgs);
+	// if (!singleImgs.isEmpty()) {
+	// p.setFirstProductImage(singleImgs.get(0));
+	// }
+	// }
 
 	public ProductService getProductService() {
 		return productService;

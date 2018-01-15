@@ -38,8 +38,6 @@ public class ProductImageAction extends ActionSupport {
 		System.out.println("pid=" + pid);
 		product = productService.get(pid);
 
-		imageService.fillImage(product);
-
 		return SUCCESS;
 	}
 

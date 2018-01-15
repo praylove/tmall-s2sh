@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8" isELIgnored="false"%>
 
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ include file="../include/admin/adminheader.jsp" %>
 <%@ include file="../include/admin/adminNavigator.jsp" %>
 
@@ -20,15 +21,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${theus}" var="u">
+			<s:iterator value="%{page.params}" var="u" >
 				<tr>
 					<td>${u.id}</td>
-					<td>${u.name}</td>
+					<td><s:property value="name" escapeHtml="true"/></td>
 					<td>
-						<a class="delete" href="admin_User_delete?id=${u.id}"><span class="glyphicon glyphicon-trash"></span></a>
+						<a class="delete" href="user_delete?user.id=${u.id}"><span class="glyphicon glyphicon-trash"></span></a>
 					</td>
 				</tr>
-			</c:forEach>
+			</s:iterator>
 		</tbody>
 	</table>
 </div>

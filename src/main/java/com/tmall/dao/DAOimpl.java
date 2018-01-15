@@ -73,6 +73,22 @@ public class DAOimpl implements DAO {
 		return total;
 	}
 
+	// public int update(String hql) {
+	//
+	// return hibernateTemplate.execute(new HibernateCallback<Integer>() {
+	//
+	// @Override
+	// public Integer doInHibernate(Session session) throws HibernateException {
+	// Long l = (Long) session.createQuery(hql).uniqueResult();
+	// if (l == null) {
+	// return 0;
+	// }
+	// return l.intValue();
+	// }
+	//
+	// });
+	// };
+
 	public HibernateTemplate getHibernateTemplate() {
 		return hibernateTemplate;
 	}

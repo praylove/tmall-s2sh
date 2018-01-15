@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017??12??27?? ????1:29:11 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="com.tmall.beans.Order" table="ORDER">
+    <class name="com.tmall.beans.Order" table="ORDERS">
         <id name="id" type="int">
             <column name="ID" />
             <generator class="increment" />
@@ -44,5 +44,9 @@
         <property name="status" type="java.lang.String">
             <column name="STATUS" />
         </property>
+        <set name="orderItems">
+            <key column="oid"></key>
+            <one-to-many class="com.tmall.beans.OrderItem"/>
+        </set>
     </class>
 </hibernate-mapping>

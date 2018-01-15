@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8" isELIgnored="false"%>
 
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ include file="../include/admin/adminheader.jsp" %>
 <%@ include file="../include/admin/adminNavigator.jsp" %>
 
@@ -9,15 +10,15 @@
 <div>
 	<ul class="m-admin-title">
 		<li>
-			<a href="admin_Category_list">所有分类 </a>
+			<a href="category_list">所有分类 </a>
 		</li>
 		<li>/</li>
 		<li>
-			<a href="admin_Category_list">${p.category.name}</a>
+			<a href="category_list">${p.category.name}</a>
 		</li>
 		<li>/</li>
 		<li>
-			<a href="admin_Product_list?cid=${p.category.id}">${p.name}</a>
+			<a href="product_list?cid=${p.category.id}">${p.name}</a>
 		</li>
 		<li>/</li>
 		<li>产品属性管理</li>
@@ -25,22 +26,20 @@
 </div>
 
 <div class="g-mid m-propertyValue-edit">
-	<form id="submit" action="admin_PropertyValue_update" method="post" enctype="multipart/form-data">
+	<form id="submit" action="propertyValue_update" method="post">
 		<table border="0" class="propertyValue">
-
-			<c:forEach items="${theppvs}" var="ppv" varStatus="status">
-				<c:if test="${status.count % 2 == 1}">
+		  <s:iterator value="%{ptvs}" var="ptv" status="status">
+				<s:if test="%{#status.odd}">
 					<tr>
-						<td>${ppv.property.name}</td>
-						<td><input id="${ppv.property.id}" type="text" name="${ppv.property.id}" placeholder="${ppv.value}" /></td>
-				</c:if>
-				<c:if test="${status.count % 2 == 0}">
-					<td>${ppv.property.name}</td>
-					<td><input id="${ppv.property.id}" type="text" name="${ppv.property.id}" placeholder="${ppv.value}" /></td>
+					   <td>${ptv.property.name}</td>
+					   <td><input id="${ptv.property.id}" type="text" name="ptvs[${status.index}].value" placeholder="${ptv.value}" /></td>
+				</s:if>
+				<s:else>
+					   <td>${ptv.property.name}</td>
+					   <td><input id="${ptv.property.id}" type="text" name="ptvs[${status.index}].value" placeholder="${ptv.value}" /></td>
 					</tr>
-				</c:if>
-			</c:forEach>
-
+				</s:else>
+            </s:iterator>
 			<tr>
 				<input id="cid" name="cid" type="hidden" value="${p.category.id}" />
 				<input id="pid" name="pid" type="hidden" value="${p.id}" />
